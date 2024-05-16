@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.shortcuts import redirect
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('firebaseapp/', include('firebaseapp.urls')),
-    path('', lambda request: redirect('firebaseapp/upload/')),
+    path('', lambda request: redirect('admin/login')),
+    path('admin/login', auth_views.LoginView.as_view(), name='login'),
 ]
 
 if settings.DEBUG:

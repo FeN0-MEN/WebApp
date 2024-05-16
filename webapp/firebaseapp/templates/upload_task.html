@@ -7,10 +7,18 @@
 </head>
 <body>
     <h1>Загрузка задания</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form id="TaskForm" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Загрузить</button>
     </form>
+    <script>
+    window.onload = function() {
+        document.getElementById("TaskForm").reset();
+    }
+    window.onbeforeunload = function() {
+        document.getElementById("TaskForm").reset();
+    }
+    </script>
 </body>
 </html>
